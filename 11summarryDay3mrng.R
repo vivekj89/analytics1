@@ -41,8 +41,23 @@ df1 %>% group_by(gender) %>% summarise(mean(marks), n(), min(marks), max(marks))
 arrange(df1, desc(marks))
 select(df1, sname, marks)
 df1 %>% arrange(desc(marks)) %>% select(sname, marks)
+names(df1)
+df1[sample(1:30, size=5),2] = NA
+#5 missing value in random location in marks coloumn
+sum(complete.cases(df1)) #no. of rows which have no missing data
+sum(!complete.cases(df1)) #no. of rows which have missing data
 
+df1[!complete.cases(df1),2] = mean(df1$marks, na.rm=T)
+mean(df1$marks, na.rm=T)
+df2 = df1[complete.cases(df1), ]  
+sum(is.na(df1))  
+sum(is.na(df2))
 
+sample(1:30, size=5)
+df1
+df1 %>% sample_n(3)
+df1 %>% sample_frac(.3)
+)
 df1 %>% sample_n(3)
 df1 %>% sample_frac(.3)                                              
 #linear regression
